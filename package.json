@@ -1,16 +1,12 @@
 {
     "name": "react-soft-ui-dashboard",
     "version": "2.0.5",
-    "private": true,
     "author": "Creative Tim & AppSeed",
     "license": "See license in https://www.creative-tim.com/license",
     "description": "Material UI version of Soft UI Dashboard by Creative Tim",
-    "bugs": {
-        "url": "https://github.com/app-generator/react-soft-ui-dashboard/issues"
-    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/app-generator/react-soft-ui-dashboard.git"
+        "url": "https://github.com/HarithaBal/Reactapp.git"
     },
     "dependencies": {
         "@emotion/cache": "^11.4.0",
@@ -44,15 +40,7 @@
         "web-vitals": "^1.0.1"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "docker_pull": "docker-compose pull",
-        "docker_build": "docker-compose build",
-        "docker_up": "docker-compose up",
-        "docker": "yarn docker_pull & yarn docker_build & yarn docker_up",
-        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+    	"sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
     },
     "eslintConfig": {
         "extends": [
@@ -72,10 +60,7 @@
             "last 1 safari version"
         ]
     },
-    "scripts": {
-    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
-  },
-
+  
     "devDependencies": {
         "eslint": "^7.30.0",
         "eslint-config-airbnb": "^18.2.1",
