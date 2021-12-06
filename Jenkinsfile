@@ -1,7 +1,7 @@
 pipeline {
     agent any
         environment {
-        registry = "519852036875.dkr.ecr.us-east-2.amazonaws.com/my-node.js-app"
+        registry = "519852036875.dkr.ecr.us-east-2.amazonaws.com/reactapp"
     }
      stages{
          stage('Build') {
@@ -52,23 +52,12 @@ pipeline {
      steps{  
          script {
                 sh 'aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 519852036875.dkr.ecr.us-east-2.amazonaws.com'
-                sh 'docker push 519852036875.dkr.ecr.us-east-2.amazonaws.com/my-node.js-app:latest'
+                sh 'docker push 519852036875.dkr.ecr.us-east-2.amazonaws.com/reactapp:latest'
          }
         }
       }
 	   
-       stage ('K8S Deploy') {
-       steps{
-                kubernetesDeploy(
-                    configs: 'nodejscjp/nodejsapp.yaml',
-                    kubeconfigId: 'K8S',
-                    enableConfigSubstitution: true
-			script{
-			  sh 'kubectl apply -f reactapp.yml'
-			}
-                    )               
-        }
-     }
+      
     }
      
    }
