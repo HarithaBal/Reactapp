@@ -16,8 +16,9 @@ spec:
         app: reactapp
     spec:
       containers:
-      - name: nodeapp
-        image: 519852036875.dkr.ecr.us-east-2.amazonaws.com/my-node.js-app:latest
+      - name: reactapp
+        image: 519852036875.dkr.ecr.us-east-2.amazonaws.com/reactapp:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
 
