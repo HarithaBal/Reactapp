@@ -63,7 +63,7 @@ pipeline {
                     configs: 'nodejscjp/nodejsapp.yaml',
                     kubeconfigId: 'K8S',
                     enableConfigSubstitution: true
-			scripts{
+			script{
 			  sh 'kubectl apply -f reactapp.yml'
 			}
                     )               
