@@ -58,13 +58,13 @@ pipeline {
       }
 	     stage('Deploy to K8S'){
 		steps{
-		 sshagent(['BastionHost']) {
-   		  sh 'scp -o StrictHostKeyChecking=no nodejsapp.yml ubuntu@3.21.21.70:/home/ubuntu'
+		 sshagent(['Kubernetes-Jenkins-Integration']) {
+   		  sh 'scp -o StrictHostKeyChecking=no reactapp.yml ubuntu@3.14.247.45:/home/ubuntu'
 		 script{
 		  try{
-			sh 'ssh ubuntu@3.21.21.70 kubectl apply -f .'
+			sh 'ssh ubuntu@3.14.247.45 kubectl apply -f .'
 			}catch(error){
-			sh 'ssh ubuntu@3.21.21.70 kubectl create -f .'
+			sh 'ssh ubuntu@3.14.247.45 kubectl create -f .'
 				    }
 			      }
 		           }
