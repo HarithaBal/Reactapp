@@ -34,7 +34,7 @@ pipeline {
       steps{
         script {
             docker.withRegistry( 'https://registry.hub.docker.com/','Jenkins-Docker-Integration'){
-             myImage = docker.build ("nodejsapp:latest")
+             myImage = docker.build ("reactapp:latest")
             }
         }
       }
@@ -56,6 +56,21 @@ pipeline {
          }
         }
       }
+	     stage('Deploy to K8S'){
+		steps{
+		 sshagent(['BastionHost']) {
+   		  sh 'scp -o StrictHostKeyChecking=no nodejsapp.yml ubuntu@3.21.21.70:/home/ubuntu'
+		 script{
+		  try{
+			sh 'ssh ubuntu@3.21.21.70 kubectl apply -f .'
+			}catch(error){
+			sh 'ssh ubuntu@3.21.21.70 kubectl create -f .'
+				    }
+			      }
+		           }
+			}
+		 
+		 }
 	   
       
     }
