@@ -60,7 +60,7 @@ pipeline {
 	      stage ('K8S Deploy') {
 		 steps{
                 kubernetesDeploy(
-                    configs: 'reactapp.yml',
+                    configs: 'reactapp.yaml',
                     kubeconfigId: 'K8S',
                     enableConfigSubstitution: true
                     )           
