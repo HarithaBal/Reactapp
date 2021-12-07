@@ -55,6 +55,7 @@ pipeline {
                 sh 'docker push 519852036875.dkr.ecr.us-east-2.amazonaws.com/reactapp:latest'
          }
         }
+
       }
 	     stage('Deploy to K8S'){
 		steps{
