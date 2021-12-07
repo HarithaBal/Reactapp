@@ -57,22 +57,16 @@ pipeline {
         }
 
       }
-	     stage('Deploy to K8S'){
-		steps{
-		 sshagent(['Kubernetes-Jenkins-Integration']) {
-   		  sh 'scp -o StrictHostKeyChecking=no reactapp.yml ubuntu@3.141.5.128:/home/ubuntu'
-		 script{
-		  try{
-			sh 'ssh ubuntu@3.141.5.128 kubectl apply -f .'
-			}catch(error){
-			sh 'ssh ubuntu@3.141.5.128 kubectl create -f .'
-				    }
-			      }
-		           }
-			}
-		 
-		 }
-	   
+	      stage ('K8S Deploy') {
+       
+                kubernetesDeploy(
+                    configs: 'reactapp.yaml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                    )           
+               
+            
+        }
       
     }
      
