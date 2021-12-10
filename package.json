@@ -40,6 +40,12 @@
         "web-vitals": "^1.0.1"
     },
     "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "docker": "yarn docker_pull & yarn docker_build & yarn docker_up",
+        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
     	"sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
     },
     "eslintConfig": {
